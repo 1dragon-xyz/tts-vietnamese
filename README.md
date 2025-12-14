@@ -2,6 +2,14 @@
 
 A collection of Python scripts to convert Vietnamese text content from various formats into audio files using Microsoft Edge's online TTS services.
 
+## Project Story
+
+I've been supporting a family member whose eyes cannot see things and can only hear. To share information with him, I needed a way to convert whatever text I wanted to send into a format he could consume: audio. I wanted something convenient and free so that I could do it frequently without incurring costs.
+
+I searched the net and was inspired by projects like [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS), but I found they weren't quite simple enough for my needs. So, I decided to create a more straightforward version that requires fewer settings and dependencies. And here we are.
+
+My family member is very happy to receive the audio versions of the text he cannot see, and I hope you and your family or friends might also benefit from it too. This is also my first-ever open-source project (with heavy help from AI), so please go easy on me!
+
 ## Features
 
 - Converts plain text, Markdown, and PDF files to speech.
