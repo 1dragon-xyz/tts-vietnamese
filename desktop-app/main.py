@@ -10,11 +10,17 @@ from datetime import datetime
 
 from logic import TextProcessor, TTSManager
 
+# Try to import version, default to Dev if not found (e.g. running directly without build script)
+try:
+    from _version import __version__
+except ImportError:
+    __version__ = "Dev"
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title("Vietnamese TTS")
+        self.title(f"Vietnamese TTS v{__version__}")
         self.geometry("550x450")
         self.resizable(False, False)
 

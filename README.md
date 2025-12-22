@@ -9,6 +9,11 @@ A lightweight native desktop application to convert Vietnamese text content from
 - **Native Playback:** Opens generated audio files in your default system media player.
 - **High Quality:** Uses `edge-tts` for natural-sounding Vietnamese voices.
 
+## Downloads & Updates
+
+- **Latest Version:** Download the latest executable from the [GitHub Releases](https://github.com/anhdhnguyen/tts-vietnamese/releases) page.
+- **Changelog:** See [CHANGELOG.md](CHANGELOG.md) for a history of updates and changes.
+
 ## Setup & Installation
 
 This project uses `uv` for package management.
