@@ -1,0 +1,4 @@
+description = "Optimize."
+prompt = """
+Analyze this code to performance issues and suggest optimization.
+"""

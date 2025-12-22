@@ -1,0 +1,18 @@
+[project]
+name = "vietnamese-tts-desktop"
+version = "0.1.0"
+description = "Lightweight Native Windows App for Vietnamese TTS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "edge-tts>=7.2.7",
+    "pypdf>=6.4.1",
+    "pyinstaller>=6.3.0",
+    "pywin32-ctypes>=0.2.2",
+    "pefile>=2023.2.7",
+    "pywin32>=306",
+    "packaging>=23.2",
+    "altgraph>=0.17.4",
+    "aiohttp>=3.9.1",
+    "certifi>=2023.11.17",
+]
