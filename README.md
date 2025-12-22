@@ -2,6 +2,8 @@
 
 A lightweight native desktop application to convert Vietnamese text content from various formats into high-quality audio files using Microsoft Edge's online TTS services.
 
+![Vietnamese TTS App Interface](assets/screenshot.png)
+
 ## Features
 
 - **Lightweight UI:** Built with Python's native `tkinter`, ensuring a small footprint and fast startup.
