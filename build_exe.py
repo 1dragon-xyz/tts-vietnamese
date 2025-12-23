@@ -95,7 +95,7 @@ def main():
     args = [
         MAIN_SCRIPT,
         f'--name={APP_NAME}',
-        '--onefile',
+        '--onedir',  # Folder mode for better performance
         '--windowed',
         '--clean',
         '--noconfirm',
@@ -104,15 +104,17 @@ def main():
     
     PyInstaller.__main__.run(args)
 
-    # 4. Rename output with version
-    dist_file = os.path.join("dist", f"{APP_NAME}.exe")
-    final_name = os.path.join("dist", f"{APP_NAME}_v{version}.exe")
+    # 4. Zip the output folder
+    dist_folder = os.path.join("dist", APP_NAME)
+    zip_base_name = os.path.join("dist", f"{APP_NAME}_v{version}")
     
-    if os.path.exists(dist_file):
-        os.rename(dist_file, final_name)
-        print(f"\nBuild Complete! Output: {final_name}")
+    if os.path.exists(dist_folder):
+        print(f"Zipping {dist_folder}...")
+        # create zip: dist/Lito_v1.0.0.zip containing the folder 'Lito'
+        shutil.make_archive(zip_base_name, 'zip', root_dir="dist", base_dir=APP_NAME)
+        print(f"\nBuild Complete! Output: {zip_base_name}.zip")
     else:
-        print("\nError: Build failed, output file not found.")
+        print("\nError: Build failed, output folder not found.")
 
     # 5. Cleanup temporary files
     if os.path.exists(VERSION_PY_PATH):
