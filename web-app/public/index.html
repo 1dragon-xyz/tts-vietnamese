@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lito Web | 1dragon.xyz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐲</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐲 Lito Web</h1>
+            <p>Free, Unlimited Text-to-Speech</p>
+        </header>
+
+        <main>
+            <div class="control-group">
+                <label for="voice-select">Voice</label>
+                <select id="voice-select">
+                    <option>Loading voices...</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <textarea id="text-input" placeholder="Type your text here..."></textarea>
+            </div>
+
+            <div class="action-group">
+                <button id="convert-btn">Convert & Play</button>
+                <div id="status"></div>
+            </div>
+
+            <audio id="audio-player" controls hidden></audio>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ by <a href="https://1dragon.xyz" target="_blank">1dragon</a></p>
+            <p class="tiny">Powered by Edge TTS & Vercel</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
