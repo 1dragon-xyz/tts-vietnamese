@@ -6,8 +6,8 @@ def test_clean_text():
     assert TextProcessor.clean_text(raw) == expected
 
 def test_extract_from_md():
-    md_content = "# Title
-**Bold** text."
+    md_content = """# Title
+**Bold** text."""
     expected = "Title Bold text."
     # The current regex might leave extra spaces or newlines, so we'll just check if key words are present
     # or strict equality if we know exactly how logic.py behaves.

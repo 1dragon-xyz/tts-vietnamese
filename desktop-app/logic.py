@@ -1,6 +1,5 @@
 import os
 import re
-import asyncio
 from typing import List, Dict
 import edge_tts
 from pypdf import PdfReader

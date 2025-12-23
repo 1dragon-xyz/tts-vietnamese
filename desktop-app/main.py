@@ -1,4 +1,3 @@
-import sys
 import os
 import asyncio
 import threading
@@ -199,7 +198,8 @@ class App(tk.Tk):
             try:
                 text_to_convert = TextProcessor.process_file(file_path)
             except Exception as e:
-                self.after(0, lambda: self.on_error(f"Error reading file: {e}"))
+                err_msg = str(e)
+                self.after(0, lambda: self.on_error(f"Error reading file: {err_msg}"))
                 return
 
         if not text_to_convert:
@@ -241,7 +241,7 @@ class App(tk.Tk):
             self.current_output_path = output_path
             self.btn_play.config(state="normal")
             self.btn_folder.config(state="normal")
-            self.status_var.set(f"Done! Saved to Documents/VietnameseTTS")
+            self.status_var.set("Done! Saved to Documents/VietnameseTTS")
             messagebox.showinfo("Success", "Conversion complete!")
         elif result == "cancelled":
             self.status_var.set("Conversion cancelled.")
