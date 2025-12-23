@@ -64,14 +64,33 @@ class TTSManager:
 
     async def get_voices(self) -> List[Dict]:
         voices = await edge_tts.list_voices()
-        return [
-            {
-                "ShortName": v["ShortName"],
-                "FriendlyName": v["FriendlyName"],
-                "Gender": v["Gender"]
-            }
-            for v in voices if "Viet" in v["FriendlyName"]
-        ]
+        
+        # Define the specific high-quality voices we want to support
+        target_voices = {
+            "vi-VN-HoaiMyNeural": "Vietnamese (Female)",
+            "vi-VN-NamMinhNeural": "Vietnamese (Male)",
+            "en-US-AvaNeural": "English (Female)",
+            "en-US-AndrewNeural": "English (Male)",
+            "zh-CN-XiaoxiaoNeural": "Chinese (Female)",
+            "zh-CN-YunxiNeural": "Chinese (Male)"
+        }
+        
+        filtered_voices = []
+        for v in voices:
+            short_name = v.get("ShortName", "")
+            if short_name in target_voices:
+                 filtered_voices.append({
+                    "ShortName": v["ShortName"],
+                    "FriendlyName": target_voices[short_name], # Use our simplified name
+                    "Gender": v["Gender"],
+                    "Locale": v.get("Locale", "Unknown") 
+                })
+        
+        # Sort so it's consistent: VI, EN, ZH
+        order = ["vi-VN", "en-US", "zh-CN"]
+        filtered_voices.sort(key=lambda x: (order.index(x['Locale']) if x['Locale'] in order else 99, x['Gender']))
+        
+        return filtered_voices
 
     async def convert(self, text: str, voice: str, output_path: str, cancel_event=None) -> str:
         """

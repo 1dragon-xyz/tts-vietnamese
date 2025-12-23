@@ -95,15 +95,32 @@ class App(tk.Tk):
         ttk.Label(self, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W, font=("Segoe UI", 8)).pack(side=tk.BOTTOM, fill=tk.X)
 
     def load_voices(self):
-        voices = [
-            {"FriendlyName": "Microsoft Hoai My (Female)", "ShortName": "vi-VN-HoaiMyNeural"},
-            {"FriendlyName": "Microsoft Nam Minh (Male)", "ShortName": "vi-VN-NamMinhNeural"}
-        ]
-        def update_combo():
-            self.voice_combo['values'] = [v["FriendlyName"] for v in voices]
-            self.voice_combo.current(0)
-            self.voice_mapping = {v["FriendlyName"]: v["ShortName"] for v in voices}
-        self.after(0, update_combo)
+        try:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            voices = loop.run_until_complete(self.tts_manager.get_voices())
+            loop.close()
+            
+            formatted_voices = []
+            self.voice_mapping = {}
+            
+            for v in voices:
+                display_name = v['FriendlyName']
+                formatted_voices.append(display_name)
+                self.voice_mapping[display_name] = v['ShortName']
+
+            def update_combo():
+                self.voice_combo['values'] = formatted_voices
+                if formatted_voices:
+                    self.voice_combo.current(0)
+                else:
+                    self.voice_var.set("No voices found.")
+            
+            self.after(0, update_combo)
+            
+        except Exception as e:
+            print(f"Error loading voices: {e}")
+            self.after(0, lambda: self.voice_var.set("Error loading voices"))
 
     def select_file(self):
         filename = filedialog.askopenfilename(
