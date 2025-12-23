@@ -1,7 +1,7 @@
 [project]
-name = "vietnamese-tts-desktop"
+name = "lito"
 version = "1.1.0"
-description = "Lightweight Native Windows App for Vietnamese TTS"
+description = "Lito: Simple & Lightweight Text to Speech"
 requires-python = ">=3.12"
 dependencies = [
     "edge-tts>=7.2.7",

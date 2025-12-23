@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 # --- Configuration ---
-APP_NAME = "VietnameseTTS"
+APP_NAME = "Lito"
 MAIN_SCRIPT = os.path.join("desktop-app", "main.py")
 VERSION_FILE = "VERSION"
 VERSION_PY_PATH = os.path.join("desktop-app", "_version.py")
@@ -53,11 +53,11 @@ VSVersionInfo(
       [
       StringTable(
         u'040904B0',
-        [StringStruct(u'CompanyName', u'Anh Nguyen'),
-        StringStruct(u'FileDescription', u'Vietnamese Text to Speech Desktop Application'),
+        [StringStruct(u'CompanyName', u'Lito Project'),
+        StringStruct(u'FileDescription', u'Lito: Simple & Lightweight Text to Speech'),
         StringStruct(u'FileVersion', u'{clean_ver}'),
         StringStruct(u'InternalName', u'{APP_NAME}'),
-        StringStruct(u'LegalCopyright', u'Copyright (c) 2024 Anh Nguyen'),
+        StringStruct(u'LegalCopyright', u'Copyright (c) 2024 Lito Project'),
         StringStruct(u'OriginalFilename', u'{APP_NAME}.exe'),
         StringStruct(u'ProductName', u'{APP_NAME}'),
         StringStruct(u'ProductVersion', u'{clean_ver}')])

@@ -59,7 +59,7 @@ class TextProcessor:
 
 class TTSManager:
     def __init__(self):
-        self.output_dir = os.path.join(os.path.expanduser("~"), "Documents", "VietnameseTTS")
+        self.output_dir = os.path.join(os.path.expanduser("~"), "Documents", "Lito")
         os.makedirs(self.output_dir, exist_ok=True)
 
     async def get_voices(self) -> List[Dict]:

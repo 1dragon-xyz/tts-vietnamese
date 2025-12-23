@@ -1,15 +1,16 @@
-# Vietnamese Text-to-Speech (TTS) Utility
+# Lito: Simple & Lightweight Text-to-Speech
 
-A lightweight native desktop application to convert Vietnamese text content from various formats into high-quality audio files using Microsoft Edge's online TTS services.
+A minimalist, high-quality desktop application to convert text into natural-sounding speech across multiple languages (Vietnamese, English, Chinese) using Microsoft Edge's online TTS services.
 
-![Vietnamese TTS App Interface](assets/screenshot.png)
+![Lito App Interface](assets/screenshot.png)
 
 ## Features
 
-- **Lightweight UI:** Built with Python's native `tkinter`, ensuring a small footprint and fast startup.
+- **Global Support:** Natural-sounding voices for Vietnamese, English, and Chinese.
+- **Minimalist UI:** Focus on what matters—simplicity and speed.
 - **Format Support:** Converts plain text, Markdown (.md), and PDF files.
 - **Native Playback:** Opens generated audio files in your default system media player.
-- **High Quality:** Uses `edge-tts` for natural-sounding Vietnamese voices.
+- **High Quality:** Powered by `edge-tts` for crystal-clear audio.
 
 ## Downloads & Updates
 
@@ -40,9 +41,9 @@ python desktop-app/main.py
 ```
 
 ### Usage Steps:
-1.  **Select a Voice:** Choose between Female (Hoai My) and Male (Nam Minh) voices.
+1.  **Select a Voice:** Choose from curated high-quality voices for different languages.
 2.  **Input Text:** Either type directly in the "Text Input" tab or upload a file in the "File Upload" tab.
-3.  **Convert:** Click "Convert to Audio". The file will be saved to your `Documents/VietnameseTTS` folder.
+3.  **Convert:** Click "Convert to Audio". The file will be saved to your `Documents/Lito` folder.
 4.  **Play Audio:** Click "Play Audio" to open the result in your default media player.
 
 ## Directory Structure
@@ -50,8 +51,8 @@ python desktop-app/main.py
 ```
 .
 ├── desktop-app/        # Native Desktop Application (Tkinter)
+├── assets/             # Images and branding assets
 ├── simple-tts/         # Legacy CLI scripts
-├── documents/          # Suggested folder for input files
 └── README.md
 ```
 

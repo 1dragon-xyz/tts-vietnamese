@@ -20,7 +20,7 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title(f"Vietnamese TTS v{__version__}")
+        self.title(f"Lito v{__version__}")
         self.geometry("550x450")
         self.resizable(False, False)
 
@@ -44,7 +44,7 @@ class App(tk.Tk):
         main_frame = ttk.Frame(self, padding="20")
         main_frame.pack(fill=tk.BOTH, expand=True)
 
-        header = ttk.Label(main_frame, text="Vietnamese Text to Speech", font=("Segoe UI", 16, "bold"))
+        header = ttk.Label(main_frame, text="Lito: Text to Speech", font=("Segoe UI", 16, "bold"))
         header.pack(pady=(0, 20))
 
         # Voice Selection
