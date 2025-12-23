@@ -38,8 +38,18 @@ class App(tk.Tk):
         threading.Thread(target=self.load_voices, daemon=True).start()
 
     def create_menu(self):
-        # Placeholder for menu bar
-        pass
+        menubar = tk.Menu(self)
+        self.config(menu=menubar)
+
+        # File Menu
+        file_menu = tk.Menu(menubar, tearoff=0)
+        file_menu.add_command(label="Exit", command=self.quit)
+        menubar.add_cascade(label="File", menu=file_menu)
+
+        # Help Menu
+        help_menu = tk.Menu(menubar, tearoff=0)
+        help_menu.add_command(label="About Lito", command=self.show_about)
+        menubar.add_cascade(label="Help", menu=help_menu)
 
     def init_ui(self):
         style = ttk.Style()
@@ -246,7 +256,8 @@ class App(tk.Tk):
             self.current_output_path = output_path
             self.btn_play.config(state="normal")
             self.btn_folder.config(state="normal")
-            self.status_var.set("Done! Saved to Documents/Lito")
+            folder_name = os.path.basename(self.tts_manager.output_dir)
+            self.status_var.set(f"Done! Saved to Documents/{folder_name}")
             messagebox.showinfo("Success", "Conversion complete!")
         elif result == "cancelled":
             self.status_var.set("Conversion cancelled.")
