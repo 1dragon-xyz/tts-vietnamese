@@ -44,8 +44,12 @@ class App(tk.Tk):
         main_frame = ttk.Frame(self, padding="20")
         main_frame.pack(fill=tk.BOTH, expand=True)
 
-        header = ttk.Label(main_frame, text="Lito: Text to Speech", font=("Segoe UI", 16, "bold"))
-        header.pack(pady=(0, 20))
+        # Header with About Button
+        header_frame = ttk.Frame(main_frame)
+        header_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        ttk.Label(header_frame, text="Lito: Text to Speech", font=("Segoe UI", 16, "bold")).pack(side=tk.LEFT)
+        ttk.Button(header_frame, text="About Lito", command=self.show_about).pack(side=tk.RIGHT)
 
         # Voice Selection
         voice_frame = ttk.Frame(main_frame)
@@ -93,6 +97,19 @@ class App(tk.Tk):
         # Status Bar
         self.status_var = tk.StringVar()
         ttk.Label(self, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W, font=("Segoe UI", 8)).pack(side=tk.BOTTOM, fill=tk.X)
+
+    def show_about(self):
+        about_text = (
+            f"Lito v{__version__}\n"
+            "Simple & Lightweight Text to Speech\n"
+            "Copyright © 2024 Lito Project\n\n"
+            "Contact & Updates:\n"
+            "• Email: anhdhnguyen@gmail.com\n"
+            "• X: x.com/1dragon_xyz\n"
+            "• GitHub: github.com/1-dragon\n"
+            "• LinkedIn: linkedin.com/in/anhdhnguyen"
+        )
+        messagebox.showinfo("About Lito", about_text)
 
     def load_voices(self):
         try:
