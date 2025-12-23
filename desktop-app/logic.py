@@ -71,7 +71,9 @@ class TTSManager:
             "en-US-AvaNeural": "English (Female)",
             "en-US-AndrewNeural": "English (Male)",
             "zh-CN-XiaoxiaoNeural": "Chinese (Female)",
-            "zh-CN-YunxiNeural": "Chinese (Male)"
+            "zh-CN-YunxiNeural": "Chinese (Male)",
+            "ja-JP-NanamiNeural": "Japanese (Female)",
+            "ja-JP-KeitaNeural": "Japanese (Male)"
         }
         
         filtered_voices = []
@@ -85,8 +87,8 @@ class TTSManager:
                     "Locale": v.get("Locale", "Unknown") 
                 })
         
-        # Sort so it's consistent: VI, EN, ZH
-        order = ["vi-VN", "en-US", "zh-CN"]
+        # Sort so it's consistent: VI, EN, ZH, JA
+        order = ["vi-VN", "en-US", "zh-CN", "ja-JP"]
         filtered_voices.sort(key=lambda x: (order.index(x['Locale']) if x['Locale'] in order else 99, x['Gender']))
         
         return filtered_voices

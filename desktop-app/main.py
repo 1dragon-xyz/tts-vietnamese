@@ -2,6 +2,7 @@ import os
 import asyncio
 import threading
 import subprocess
+import webbrowser
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import winsound
@@ -62,7 +63,7 @@ class App(tk.Tk):
         header_frame = ttk.Frame(main_frame)
         header_frame.pack(fill=tk.X, pady=(0, 20))
         
-        ttk.Label(header_frame, text="Lito: Text to Speech", font=("Segoe UI", 16, "bold")).pack(side=tk.LEFT)
+        ttk.Label(header_frame, text="Lito: Free Text to Speech", font=("Segoe UI", 16, "bold")).pack(side=tk.LEFT)
         ttk.Button(header_frame, text="?", width=3, command=self.show_about).pack(side=tk.RIGHT)
 
         # Voice Selection
@@ -113,17 +114,46 @@ class App(tk.Tk):
         ttk.Label(self, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W, font=("Segoe UI", 8)).pack(side=tk.BOTTOM, fill=tk.X)
 
     def show_about(self):
-        about_text = (
-            f"Lito v{__version__}\n"
-            "Simple & Lightweight Text to Speech\n"
-            "Copyright © 2024 Lito Project\n\n"
-            "Contact & Updates:\n"
-            "• Email: anhdhnguyen@gmail.com\n"
-            "• X: x.com/1dragon_xyz\n"
-            "• GitHub: github.com/1dragon-xyz\n"
-            "• LinkedIn: linkedin.com/in/anhdhnguyen"
-        )
-        messagebox.showinfo("About Lito", about_text)
+        about_window = tk.Toplevel(self)
+        about_window.title("About Lito")
+        about_window.geometry("400x320")
+        about_window.resizable(False, False)
+        
+        # Center the window relative to the main app
+        try:
+            x = self.winfo_x() + (self.winfo_width() // 2) - 200
+            y = self.winfo_y() + (self.winfo_height() // 2) - 160
+            about_window.geometry(f"+{x}+{y}")
+        except Exception:
+            pass # Fallback to default placement if calculations fail
+
+        content_frame = ttk.Frame(about_window, padding="20")
+        content_frame.pack(fill=tk.BOTH, expand=True)
+
+        # Title & Version
+        ttk.Label(content_frame, text=f"Lito v{__version__}", font=("Segoe UI", 12, "bold")).pack(pady=(0, 5))
+        ttk.Label(content_frame, text="Simple & Lightweight Text to Speech").pack(pady=(0, 5))
+        ttk.Label(content_frame, text="Copyright © 2025 Lito Project").pack(pady=(0, 15))
+
+        # Links Section
+        ttk.Label(content_frame, text="Contact & Updates:", font=("Segoe UI", 10, "bold")).pack(pady=(0, 5))
+
+        def open_link(url):
+            webbrowser.open(url)
+
+        links = [
+            ("Email: anhdhnguyen@gmail.com", "mailto:anhdhnguyen@gmail.com"),
+            ("X: x.com/1dragon_xyz", "https://x.com/1dragon_xyz"),
+            ("GitHub: github.com/1dragon-xyz", "https://github.com/1dragon-xyz"),
+            ("LinkedIn: linkedin.com/in/anhdhnguyen", "https://linkedin.com/in/anhdhnguyen")
+        ]
+
+        for text, url in links:
+            lbl = ttk.Label(content_frame, text=text, cursor="hand2", foreground="blue")
+            lbl.pack(pady=2)
+            lbl.bind("<Button-1>", lambda e, u=url: open_link(u))
+            
+        ttk.Button(content_frame, text="Close", command=about_window.destroy).pack(side=tk.BOTTOM, pady=(10, 0))
 
     def load_voices(self):
         try:

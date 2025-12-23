@@ -10,16 +10,17 @@ A test run is considered a **PASS** only if **ALL** the following steps are comp
 
 1.  **Launch the App:**
     *   Run: `uv run desktop-app/main.py`
-    *   **Check:** App window opens. Title is "Lito vX.X.X". Header says "Lito: Text to Speech". "?" button is visible.
+    *   **Check:** App window opens. Title is "Lito vX.X.X". Header says "Lito: Free Text to Speech". "?" button is visible.
 
 2.  **Verify About Dialog:**
     *   Click "?".
     *   **Check:** Popup appears with correct Version, Copyright, and Contact Info.
+    *   **Check:** Links are clickable.
     *   Close the popup.
 
 3.  **Test Voice Selection:**
     *   Click "Select Voice" dropdown.
-    *   **Check:** List contains Vietnamese, English, and Chinese voices.
+    *   **Check:** List contains Vietnamese, English, Chinese, and Japanese voices.
     *   Select "English (Male)".
 
 4.  **Test Text Conversion:**
